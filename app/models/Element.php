@@ -28,9 +28,9 @@ class Element extends Eloquent implements UserInterface, RemindableInterface {
 		return Element::where('user_id', '=', $userID)->where('element_type_id','=',1)->where('deleted','=',0)->get();
 	}
 
-	public static function getPage($pageID)
+	public static function getPage($userID,$pageID)
 	{
-		return Element::where('user_id', '=', Auth::user()->id)->where('id','=',$pageID)->first();
+		return Element::where('user_id', '=', $userID)->where('id','=',$pageID)->first();
 	}
 
 	public static function getSiteNavigation($userID)

@@ -41,4 +41,11 @@ class ApiController extends BaseController {
 		return Response::json($data);	
 	}
 
+	public function getPageDetails($id)
+	{
+		$pageDetails = Element::getPage(Input::get('apiKey'),$id);
+
+		return Response::json($pageDetails);	
+	}
+
 }

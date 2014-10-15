@@ -57,6 +57,7 @@ Route::post('pages/add', array('before' => 'auth', 'uses' => 'PagesController@cr
 Route::post('pages/delete', array('before' => 'auth', 'uses' => 'PagesController@deletePage', function(){}));
 
 Route::post('api/pages', array('uses' => 'ApiController@getSiteNavigation', function(){}));
+Route::post('api/pages/{id}',array('uses' => 'ApiController@getPageDetails'))->where(array('id' => '[0-9]+'));
 Route::post('api/site', array('uses' => 'ApiController@getSiteDetails', function(){}));
 Route::post('api/collections', array('uses' => 'ApiController@getCollections', function(){}));
 

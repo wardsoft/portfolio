@@ -25,6 +25,7 @@
 		<link rel="stylesheet" href="<?php echo asset('assets/vendor/summernote/summernote.css')?>" />
 		<link rel="stylesheet" href="<?php echo asset('assets/vendor/summernote/summernote-bs3.css')?>" />		
 		<link rel="stylesheet" href="<?php echo asset('assets/vendor/codemirror/lib/codemirror.css')?>" />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="<?php echo asset('assets/stylesheets/theme.css')?>" />
@@ -82,9 +83,7 @@
 		<script src="<?php echo asset('assets/vendor/dropzone/dropzone.js"')?>></script>
 		<script src="<?php echo asset('assets/javascripts/ui-elements/examples.notifications.js"')?>></script>
 		<script src="<?php echo asset('assets/vendor/summernote/summernote.js"')?>"></script>
-		<!-- Examples -->
-		<script src="<?php echo asset('assets/javascripts/dashboard/examples.dashboard.js')?>"></script>
-		
+				
 		<!-- Theme Base, Components and Settings -->
 		<script src="<?php echo asset('assets/javascripts/theme.js')?>"></script>
 		

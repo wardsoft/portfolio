@@ -115,8 +115,10 @@ $('.deleteCollection').on( 'click', function(e) {
 $('#pageForm').on( 'submit', function(e) {
 	e.preventDefault();
 	var formData = $('#pageForm').serialize();
+	var sHTML = $('.note-editable').html();
+	console.log(sHTML);
 
-	formData = formData+'&content='+$('.summernote').code();
+	formData = formData+'&content='+sHTML;
 
 	if($( "#pageID" ).val()){
 		actionURL = '/pages/edit/'+$( "#pageID" ).val();
@@ -218,13 +220,40 @@ $(function() {
   // Now that the DOM is fully loaded, create the dropzone, and setup the
   // event listeners
 
-  var myDropzone = new Dropzone("#dropzone-form");
+  if($('#dropzone-form').length){
+  	var myDropzone = new Dropzone("#dropzone-form");
 
-  myDropzone.on("success", function(file,responseText) {
-  	var imageURL  = responseText.image_path+'/'+responseText.image_name;
-  	var imageHTML = '<a id="28" class="img-thumbnail lightbox" href="'+imageURL+'" data-plugin-options="{ &quot;type&quot;:&quot;image&quot; }"><img class="img-responsive" width="215" src="'+imageURL+'"><span class="zoom"><i class="fa fa-search"></i></span></a>'; 
-  	$('#sortable').append(imageHTML);
-    console.log(responseText);
-  });
-
+  	myDropzone.on("success", function(file,responseText) {
+	  	var imageURL  = responseText.image_path+'/'+responseText.image_name;
+	  	var imageHTML = '<a id="28" class="img-thumbnail lightbox" href="'+imageURL+'" data-plugin-options="{ &quot;type&quot;:&quot;image&quot; }"><img class="img-responsive" width="215" src="'+imageURL+'"><span class="zoom"><i class="fa fa-search"></i></span></a>'; 
+	  	$('#sortable').append(imageHTML);
+	    console.log(responseText);
+  	});
+  }
+  
 })
+
+$(document).ready(function() {
+        $('#summernote').summernote({
+            height: 500,
+            onImageUpload: function(files, editor, welEditable) {
+                sendFile(files[0], editor, welEditable);
+            }
+        });
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: "/media/upload",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                	newURL = url['image_path']+url['image_name'];
+                    editor.insertImage(welEditable, newURL);
+                }
+            });
+        }
+    });

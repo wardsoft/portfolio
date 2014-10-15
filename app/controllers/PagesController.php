@@ -69,7 +69,7 @@ class PagesController extends BaseController {
 
 	public function editPage($id)
 	{
-		$data['page']       = Element::getPage($id);
+		$data['page']       = Element::getPage(Auth::user()->id,$id);
 		$data['action']     = 'Update';
 
 		$this->layout->content = View::make('pages-page-add')->with('data',$data);
