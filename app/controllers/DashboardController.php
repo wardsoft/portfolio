@@ -14,10 +14,14 @@ class DashboardController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+	
+	protected $layout = 'layouts.master';
 
 	public function index()
 	{
-		return View::make('pages-dashboard');
+		$sites = Site::getSitesForUser(Auth::user()->id);
+
+		$this->layout->content = View::make('pages-dashboard')->with('sites',$sites);
 	}
 
 	public function profile()
