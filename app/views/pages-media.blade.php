@@ -47,7 +47,10 @@
 														<img class="img-responsive" width="215" src="{{$file}}">
 														@endif
 														<span>
-														{{pathinfo($file, PATHINFO_FILENAME)}}
+														
+														</span>
+														<span class="deleteMedia">
+															<i class="fa fa-times"></i>
 														</span>
 														<span class="zoom">
 															<i class="fa fa-search"></i>

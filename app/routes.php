@@ -75,3 +75,4 @@ Route::get('sites', array('before' => 'auth', 'uses' => 'SitesController@index',
 */
 Route::get('media', 'MediaController@index');
 Route::post('media/upload', 'MediaController@upload');
+Route::post('media/delete', 'MediaController@delete');

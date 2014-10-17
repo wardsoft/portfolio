@@ -122,6 +122,9 @@
 												@foreach($data['collectionImages'] as $image)
 													<a id="{{$image->id}}" class="img-thumbnail lightbox" href="{{$image->image_path}}/{{$image->image_name}}" data-plugin-options="{ &quot;type&quot;:&quot;image&quot; }">
 														<img class="img-responsive" width="215" src="{{$image->image_path}}/{{$image->image_name}}">
+														<span class="deleteMedia">
+															<i class="fa fa-times"></i>
+														</span>
 														<span class="zoom">
 															<i class="fa fa-search"></i>
 														</span>

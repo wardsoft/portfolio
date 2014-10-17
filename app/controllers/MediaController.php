@@ -66,6 +66,32 @@ class MediaController extends BaseController {
 		}
 	}
 
+	public function delete()
+	{
+
+		$URLfilePath = Input::get('URLfilePath');
+		$components = parse_url($URLfilePath);
+
+		$deleteResult = File::delete(public_path().$components['path']);
+
+		if(Input::get('imageID') != ''){
+			$this->_deleteImage(Input::get('imageID'));
+		}
+
+		if($deleteResult){
+			$data['success'] = 'true';
+			$data['type'] = 'Success';
+			$data['message'] = 'Media has successfully been deleted';
+		}
+		else{
+			$data['success'] = 'false';
+			$data['type'] = 'Fail';
+			$data['message'] = 'Media has not been deleted';
+		}
+
+		return Response::json($data);
+	}
+
 	private function _insertImage($collectionID,$imageName,$image_path)
 	{
 		return $image = Image::create(array(
@@ -75,6 +101,13 @@ class MediaController extends BaseController {
 	            'image_name' => $imageName,
 	            'active' => 1,
 	            'image_path' => URL::to('/').$image_path));
+	}
+
+	private function _deleteImage($imageID)
+	{
+		$image = Image::find($imageID);
+
+		$image->delete();
 	}
 
 }

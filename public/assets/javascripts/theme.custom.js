@@ -182,6 +182,36 @@ console.log(pageID);
 
 });
 
+$('.deleteMedia').on( 'click', function(e) {
+	e.preventDefault();
+
+	var data = {URLfilePath:$(this).closest( "a" ).attr('href'),imageID:$(this).closest( "a" ).attr('id')};
+
+	$(this).closest( "a" ).remove();
+
+	$.post( "/media/delete", data)
+	  .done(function( data ) {
+	  		console.log(data);
+	  		
+	  		if(data.success == 'true'){
+	  			var type = 'success';
+	  		}
+	  		else{
+	  			var type = 'error';
+	  		}
+
+	    	var notice = new PNotify({
+								title: 'Notification',
+								text: data.message,
+								type: type,
+								addclass: 'stack-bar-top',
+								stack: stack_bar_top,
+								width: "100%"
+			});
+	});
+
+});
+
 //Sortable
 $(function() {
 	var itemList = $( "#sortable" );
