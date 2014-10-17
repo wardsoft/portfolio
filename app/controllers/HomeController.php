@@ -15,11 +15,16 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	public function showIntro(){
+		return View::make('pages-intro');
+	}
+
 	public function showSignUp(){
 		return View::make('pages-signup');
 	}
 
 	public function showSignIn(){
+		print_r(App::environment());
 		return View::make('pages-signin');
 	}
 

@@ -67,7 +67,7 @@
 																<a collectionID="{{ $collection->id }}" class="deleteCollection"><i class="fa fa-trash-o"></i></a>
 															</td>
 	    													<td class="actions">{{ $collection->title }}</td>
-	    													<td class="actions">{{ $collection->description }}</td>
+	    													<td class="actions">{{ substr($collection->description,0,75) }}.....</td>
 	    													<td>
 	    														@if($collection->visability == 1)
 	    															<span class="label label-success">Public</span>

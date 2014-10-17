@@ -16,7 +16,7 @@
 | Sign up/Sign in
 |--------------------------------------------------------------------------
 */
-Route::get('/', 'HomeController@showSignup');
+Route::get('/', 'HomeController@showSignIn');
 Route::get('sign-in', 'HomeController@showSignIn');
 Route::post('sign-in', 'HomeController@signIn');
 Route::get('sign-out', 'HomeController@signOut');
