@@ -24,7 +24,6 @@ class HomeController extends BaseController {
 	}
 
 	public function showSignIn(){
-		print_r(App::environment());
 		return View::make('pages-signin');
 	}
 
